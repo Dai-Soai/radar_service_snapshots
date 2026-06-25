@@ -33,7 +33,7 @@ radar_service_snapshots/
 ├── utility_6/
 ├── utility_7/
 ├── utility_8/
-└── chat_sessions/
+
 ```
 
 Each utility directory stores release snapshots in both Markdown and YAML formats.
