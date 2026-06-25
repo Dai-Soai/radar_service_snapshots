@@ -203,19 +203,6 @@ NEXT
 
 UNLOCKED
 
----
-
-## Câu lệnh tiếp tục
-
-Tri Kỷ,
-
-mở SNAP-TELEGRAM-KNOWLEDGE-BOT-V0.1.1-STABLE
-
-và bắt đầu Utility #3:
-Document Assistant MVP.
-
----
-
 ## Kết luận
 
 Telegram Knowledge Bot v0.1.1 đã hoàn thành mục tiêu MVP.
