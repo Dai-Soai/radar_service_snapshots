@@ -1,0 +1,57 @@
+id: SNAP-FILE-WATCHER-AUTOMATION-MVP-V0.1.0-RELEASED
+phase: RADAR Services Bridge Phase
+utility: Utility #7
+name: File Watcher Automation MVP
+version: v0.1.0
+status: RELEASED
+lock_state: LOCKED
+
+completed:
+  - M1 Bootstrap
+  - M2 Watch Contract
+  - M3 File Detection Layer
+  - M4 Event Builder
+  - M5 Workflow Trigger Executor
+  - M6 Processed / Failed Archive
+  - M7 JSON Event Log
+  - M8 CLI Watch Options
+  - M9 Packaging & README
+  - M10 v0.1.0 Release
+
+core_capability: >
+  Watches an inbox folder, detects supported files, builds watch events,
+  triggers RADAR workflow automation, archives processed or failed files,
+  writes JSON audit logs, and supports one-shot or interval-based CLI watch cycles.
+
+architecture:
+  - Inbox
+  - File Detection
+  - Watch Event
+  - Scan Report
+  - Workflow Trigger
+  - Processed / Failed Archive
+  - JSON Event Log
+  - CLI Watch Loop
+
+cli:
+  run_once: watch-run data/inbox --workflow workflows/sample.workflow.json --once
+  trigger_archive_log: watch-run data/inbox --workflow workflows/sample.workflow.json --trigger --archive --log-json
+  interval_watch: watch-run data/inbox --workflow workflows/sample.workflow.json --interval 2 --max-cycles 3 --log-json
+
+test_status:
+  pytest: 37 passed
+
+local_integrations:
+  - workflow_automation_mvp
+  - document_pipeline_mvp
+  - radar_knowledge_search
+
+release:
+  tag: v0.1.0
+  github_release: true
+
+locked_decision: >
+  Utility #7 is released as a reusable event-driven automation component
+  for the RADAR AI Utility Ecosystem.
+
+next_step: Continue with the next utility in the RADAR Services Bridge roadmap.

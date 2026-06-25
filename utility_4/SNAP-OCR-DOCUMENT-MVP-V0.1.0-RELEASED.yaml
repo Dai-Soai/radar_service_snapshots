@@ -1,0 +1,69 @@
+
+snapshot_id: SNAP-OCR-DOCUMENT-MVP-V0.1.0-RELEASED
+
+phase: Utility Bridge Phase
+
+status: RELEASED
+
+date: 2026-06-14
+
+utility:
+name: OCR Document MVP
+version: 0.1.0
+
+objective:
+
+* OCR image files
+* JSON report export
+* CLI workflow
+* Batch OCR processing
+* Reusable RADAR utility
+
+completed:
+
+* bootstrap
+* ocr_core
+* exporter
+* json_report_layer
+* cli_layer
+* batch_ocr
+* packaging_release
+
+commands:
+
+* "ocr-doc image.png"
+* "ocr-doc image.png --text-only"
+* "ocr-doc image.png --json report.json"
+* "ocr-doc image.png --json report.json --quiet"
+* "ocr-doc --batch data/batch_images"
+
+modules:
+
+* ocr.py
+* exporter.py
+* batch.py
+* cli.py
+
+tests:
+total_passed: 10
+
+architecture:
+
+* OCR Core
+* JSON Export
+* Structured Reports
+* CLI Interface
+* Batch Processing
+
+locked:
+ocr_engine: Tesseract
+output_format: JSON
+interface: CLI
+batch_processing: true
+packaging: pyproject.toml
+testing: pytest_required
+
+release:
+repository: ocr_document_mvp
+version: 0.1.0
+status: RELEASED

@@ -1,0 +1,62 @@
+
+snapshot_id: SNAP-TELEGRAM-KNOWLEDGE-BOT-V0.1.1-STABLE
+
+phase: RADAR_SERVICES
+
+utility: TELEGRAM_KNOWLEDGE_BOT
+
+version: v0.1.1
+
+status: STABLE
+
+lock_state: LOCKED
+
+dependencies:
+
+* RADAR_KNOWLEDGE_SEARCH_V0.1.0
+
+features:
+
+* start_command
+* help_command
+* search_command
+* stats_command
+
+backend:
+storage: sqlite
+search: sqlite_fts5
+
+integrations:
+
+* telegram_api
+* knowledge_search_service
+
+tests:
+startup: PASS
+telegram_api: PASS
+search_query: PASS
+stats_command: PASS
+integration: PASS
+
+github:
+status: PUSHED
+
+roadmap:
+utility_1:
+status: RELEASED
+
+utility_2:
+status: STABLE
+
+utility_3:
+status: NEXT
+name: Document Assistant MVP
+
+next_snapshot:
+SNAP-DOCUMENT-ASSISTANT-MVP-V0.1
+
+continuation_command: >
+Tri Kỷ,
+mở SNAP-TELEGRAM-KNOWLEDGE-BOT-V0.1.1-STABLE
+và bắt đầu Utility #3:
+Document Assistant MVP.

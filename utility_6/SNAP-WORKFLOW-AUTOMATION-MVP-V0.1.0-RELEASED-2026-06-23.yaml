@@ -1,0 +1,301 @@
+
+snapshot_id: SNAP-WORKFLOW-AUTOMATION-MVP-V0.1.0-RELEASED-2026-06-23
+phase: Utility Bridge Phase / RADAR Services Bridge Phase
+status: RELEASED
+lock_state: LOCKED
+utility_number: 6
+utility_name: Workflow Automation MVP
+repository: workflow_automation_mvp
+version: v0.1.0
+release_date: 2026-06-23
+github_release:
+tag: v0.1.0
+title: workflow_automation_mvp v0.1.0
+status: published
+
+purpose: >
+Workflow Automation MVP is the orchestration layer for the RADAR AI Utility
+Ecosystem. It coordinates reusable local utilities through a workflow contract,
+task registry, CLI interface, Knowledge Search integration, and Telegram-facing
+command layer.
+
+test_status:
+pytest: 41 passed
+
+milestones:
+M1:
+name: Bootstrap
+status: completed
+outputs:
+- Python package structure
+- auto-run CLI command
+- sample workflow contract
+- pytest foundation
+M2:
+name: Workflow Contract
+status: completed
+outputs:
+- WorkflowStep
+- WorkflowOptions
+- WorkflowSpec
+- JSON workflow parser
+- required field validation
+- workflow option parsing
+M3:
+name: Task Registry
+status: completed
+outputs:
+- task registry
+- supported task validation
+- detect task
+- pipeline task
+- publish task
+M4:
+name: Local Workflow Runner
+status: completed
+outputs:
+- local step executor
+- StepExecutionResult
+- ordered step execution
+- disabled step skipping
+- step result CLI output
+M5:
+name: Document Pipeline Executor
+status: completed
+outputs:
+- pipeline_executor.py
+- doc-pipe integration
+- workflow JSON output
+- workflow Markdown output
+- published documents output
+M6:
+name: CLI Layer Expansion
+status: completed
+outputs:
+- target override
+- export_json override
+- export_markdown override
+- publish override
+- dry_run mode
+M7:
+name: Knowledge Search Integration
+status: completed
+outputs:
+- knowledge_executor.py
+- index task type
+- radar-search index integration
+- radar-search search integration
+- post-workflow search query
+M8A:
+name: Telegram Contract
+status: completed
+outputs:
+- telegram.py
+- TelegramWorkflowRequest
+- Telegram-style /run parser
+- workflow response formatter
+M8B:
+name: Mock Telegram Command
+status: completed
+outputs:
+- mock Telegram command router
+- /workflow help
+- /workflow status
+- /run command routing
+M8C:
+name: Telegram Response Integration
+status: completed
+outputs:
+- compact Telegram-ready response
+- status icons
+- search result summary formatting
+- compact=True handler path
+M9:
+name: Packaging and README Finalization
+status: completed
+outputs:
+- standardized pyproject.toml
+- finalized README.md
+- documented local dependencies
+- documented CLI usage
+- documented Telegram mock usage
+M10:
+name: v0.1.0 Release
+status: completed
+outputs:
+- git tag v0.1.0
+- GitHub Release
+- release notes
+- locked release state
+
+supported_cli:
+
+* auto-run workflows/sample.workflow.json
+* auto-run workflows/sample.workflow.json --dry-run
+* auto-run workflows/sample.workflow.json --publish --search "Workflow"
+* auto-run workflows/sample.workflow.json --target data/custom_docs --export-json --export-markdown --publish
+
+mock_telegram_commands:
+
+* /workflow help
+* /workflow status
+* /run workflows/sample.workflow.json --dry-run
+* /run workflows/sample.workflow.json --publish --search Workflow
+* /run workflows/sample.workflow.json --target data/custom_docs --export-json --export-markdown --publish
+
+local_utility_integrations:
+
+* document_pipeline_mvp
+* radar_knowledge_search
+
+local_dependency_install:
+
+* pip install -e ../document_pipeline_mvp
+* pip install -e ../radar_knowledge_search
+
+cli_dependencies:
+
+* auto-run
+* doc-pipe
+* radar-search
+
+supported_task_types:
+detect:
+purpose: Validate and acknowledge workflow target
+pipeline:
+purpose: Run Document Pipeline
+publish:
+purpose: Publish processed documents
+index:
+purpose: Index published documents with Knowledge Search
+
+architecture:
+flow:
+- CLI / Telegram Command
+- Workflow Contract
+- Task Registry
+- Local Workflow Runner
+- Document Pipeline
+- Published Documents
+- Knowledge Search Index
+- Knowledge Search Query
+
+main_package_files:
+
+* workflow_automation/cli.py
+* workflow_automation/executor.py
+* workflow_automation/knowledge_executor.py
+* workflow_automation/pipeline_executor.py
+* workflow_automation/registry.py
+* workflow_automation/runner.py
+* workflow_automation/telegram.py
+* workflow_automation/workflow.py
+
+main_tests:
+
+* tests/test_cli.py
+* tests/test_executor.py
+* tests/test_knowledge_executor.py
+* tests/test_pipeline_executor.py
+* tests/test_registry.py
+* tests/test_telegram.py
+* tests/test_workflow.py
+
+locked_architecture_principles:
+workflow_py:
+role: contract only
+allowed:
+- WorkflowStep
+- WorkflowOptions
+- WorkflowSpec
+- workflow JSON loading
+- workflow validation
+forbidden_imports:
+- workflow_automation.executor
+- workflow_automation.runner
+- workflow_automation.cli
+executor_py:
+role: step execution
+owns:
+- StepExecutionResult
+- step execution logic
+- pipeline step dispatch
+- index step dispatch
+runner_py:
+role: orchestration
+owns:
+- workflow spec loading
+- CLI override application
+- dry-run handling
+- enabled step execution
+- optional Knowledge Search query
+- final workflow status
+cli_py:
+role: terminal interface
+owns:
+- argparse
+- CLI flags
+- terminal output formatting
+telegram_py:
+role: Telegram-facing adapter
+owns:
+- Telegram command parsing
+- mock Telegram command routing
+- compact chat response formatting
+- bridge to workflow runner
+
+critical_lessons:
+circular_import_boundary:
+valid_direction:
+- cli.py -> runner.py
+- runner.py -> executor.py
+- executor.py -> workflow.py
+forbidden_direction:
+- workflow.py -> executor.py
+- workflow.py -> runner.py
+- workflow.py -> cli.py
+test_strategy: >
+External CLI integrations should be validated through contracts and smoke
+tests, while subprocess-heavy behavior should remain lightweight in unit tests.
+
+ecosystem_role:
+description: >
+Utility #6 is the first orchestration utility that connects previous tools
+into an operational pipeline.
+connects:
+- Utility #5 Document Pipeline
+- Utility #1 Knowledge Search
+- Telegram-facing command layer
+
+final_state:
+M1_Bootstrap: completed
+M2_Workflow_Contract: completed
+M3_Task_Registry: completed
+M4_Local_Workflow_Runner: completed
+M5_Document_Pipeline_Executor: completed
+M6_CLI_Layer_Expansion: completed
+M7_Knowledge_Search_Integration: completed
+M8A_Telegram_Contract: completed
+M8B_Mock_Telegram_Command: completed
+M8C_Telegram_Response_Integration: completed
+M9_Packaging_README_Finalization: completed
+M10_v0_1_0_Release: completed
+
+next_recommended_utility:
+utility_number: 7
+name: File Watcher Automation MVP
+repository: file_watcher_automation_mvp
+purpose: >
+Watch a folder for new files and trigger workflow_automation_mvp automatically.
+strategic_shift: manual workflow execution -> event-driven automation
+proposed_flow:
+- watch folder
+- detect new file
+- trigger workflow_automation_mvp
+- run document pipeline
+- publish
+- index
+- search/report
+
+continuation_command: >
+Tri Kỷ, chúng ta bắt đầu Utility #7 — File Watcher Automation MVP, M1 Bootstrap.

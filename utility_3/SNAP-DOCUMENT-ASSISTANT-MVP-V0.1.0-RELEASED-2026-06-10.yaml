@@ -1,0 +1,83 @@
+
+snapshot_id: SNAP-DOCUMENT-ASSISTANT-MVP-V0.1.0-RELEASED-2026-06-10
+
+phase: Utility Bridge Phase
+
+status: RELEASED
+
+utility: 3
+
+project_name: Document Assistant MVP
+
+version: v0.1.0
+
+release_date: 2026-06-10
+
+test_status:
+pytest: 12 PASSED
+
+modules_completed:
+
+* M1 Bootstrap CLI
+* M2 Extract Text Layer
+* M3 Summary Engine V1
+* M4 Markdown Export Layer
+* M5 Publish Layer
+* M6 Batch Processing Layer
+* M7 JSON Export Layer
+* M8A Telegram Summary Command
+* M8B Telegram Publish Command
+* M8C Telegram Batch Command
+* M9 Packaging and Release
+
+cli_commands:
+
+* doc-assist data/sample.md
+* doc-assist data/sample.md --json outputs/report.json
+* doc-assist data/sample.md --publish
+* doc-assist data/batch_docs --export outputs/batch_reports
+
+telegram_commands:
+
+* /start
+* /help
+* /search
+* /stats
+* /summary
+* /publish
+* /batch
+
+dependencies:
+
+* radar-knowledge-search
+
+outputs:
+
+* markdown_reports
+* json_reports
+* batch_reports
+
+github:
+repository: document_assistant_mvp
+branch: main
+status: PUSHED
+
+architecture:
+
+* Summary Engine
+* Markdown Export
+* JSON Export
+* Publish Layer
+* Batch Layer
+* Telegram Layer
+* Knowledge Search Integration
+
+future_extensions:
+
+* OCR Layer
+* PDF Extraction
+* AI Summary Layer
+* RAG Pipeline
+* Knowledge Ingestion Pipeline
+
+locked: true

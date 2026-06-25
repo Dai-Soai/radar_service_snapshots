@@ -1,0 +1,212 @@
+snapshot_id: SNAP-WORKFLOW-RUNNER-MVP-V0.1.0-RELEASED
+phase: RADAR Services Bridge Phase
+utility: "Utility #8 — Workflow Runner MVP"
+status: RELEASED
+version: v0.1.0
+
+test_status:
+  pytest: "34 passed"
+
+package_build:
+  status: PASS
+  artifacts:
+    - workflow_runner_mvp-0.1.0.tar.gz
+    - workflow_runner_mvp-0.1.0-py3-none-any.whl
+
+context: >
+  Utility #8 — Workflow Runner MVP is a minimal YAML-driven workflow engine
+  for RADAR Services utilities. It executes local workflows defined in YAML,
+  validates workflow contracts, runs sequential actions, exports outputs,
+  and writes JSON execution logs.
+
+completed_milestones:
+  M1_bootstrap_project:
+    - Created project structure
+    - Created pyproject.toml
+    - Created README.md
+    - Created src/workflow_runner/
+    - Created tests/
+    - Initialized venv and git
+    - Pushed initial foundation
+
+  M2_workflow_contract:
+    - Created workflow contract dataclasses
+    - Added WorkflowInput
+    - Added WorkflowStep
+    - Added WorkflowDefinition
+    - Added StepResult
+    - Added WorkflowResult
+    - Added workflow_from_dict()
+    - Pytest passed
+
+  M3_yaml_loader:
+    - Created YAML loader
+    - Added load_yaml_file()
+    - Added load_workflow()
+    - Added WorkflowLoadError
+    - Added sample workflow YAML
+    - Added loader tests
+    - Pytest passed
+
+  M4_step_validator:
+    - Created workflow validator
+    - Added required field checks
+    - Added duplicate step ID validation
+    - Added supported action validation
+    - Added validator tests
+    - Pytest passed
+
+  M5_action_executor:
+    - Created action registry
+    - Added read_text
+    - Added mock_summary
+    - Added write_json
+    - Created workflow executor
+    - Added success and failure execution tests
+    - Pytest passed
+
+  M6_cli_runner:
+    - Created CLI entrypoint
+    - Added workflow-runner run
+    - Tested CLI manually
+    - Added CLI tests
+    - Generated summary.json
+    - Pytest passed
+
+  M7_execution_log_json:
+    - Created execution logger
+    - Added workflow_result_to_dict()
+    - Added write_execution_log()
+    - Added CLI option --log-json
+    - Generated execution log JSON
+    - Added logger tests
+    - Pytest passed
+
+  M8_file_watcher_integration_example:
+    - Added file watcher event sample
+    - Added integration example document
+    - Added integration example tests
+    - Locked no direct package dependency between Utility #7 and Utility #8
+    - Pytest passed
+
+  M9_packaging_and_readme:
+    - Completed README
+    - Completed installation guide
+    - Completed usage examples
+    - Completed project structure documentation
+    - Completed release notes
+    - Verified Python package build
+    - Pytest passed
+
+  M10_release:
+    - Locked version v0.1.0
+    - Locked status RELEASED
+    - Locked release snapshot
+    - Utility #8 moved to released state
+
+locked_architecture:
+  flow:
+    - workflow.yaml
+    - Loader
+    - Validator
+    - Executor
+    - Action Registry
+    - Actions
+    - Workflow Result
+    - Execution Log JSON
+
+locked_integration_boundary:
+  flow:
+    - "Utility #7 — File Watcher Automation MVP"
+    - event contract
+    - "Utility #8 — Workflow Runner MVP"
+    - execution log
+  utility_7_owns:
+    - file detection
+    - event creation
+    - inbox/archive movement
+    - file watcher event log
+  utility_8_owns:
+    - workflow loading
+    - workflow validation
+    - sequential step execution
+    - action registry
+    - workflow execution log
+  dependency_decision: "No direct package dependency is introduced between Utility #7 and Utility #8."
+
+locked_decisions:
+  LOCKED-1: Workflow Runner MVP is a YAML-driven workflow utility.
+  LOCKED-2: Workflow definitions are declared in YAML, not hardcoded Python pipelines.
+  LOCKED-3: Python owns loader, validator, executor, action registry, and logging.
+  LOCKED-4: MVP v0.1.0 supports sequential execution only.
+  LOCKED-5: MVP v0.1.0 supports local workflow execution only.
+  LOCKED-6: Execution Log JSON is the audit trail for Utility #8.
+  LOCKED-7: Utility #8 integrates with Utility #7 through example-level event contracts, not direct package dependency.
+  LOCKED-8: Release version is locked as v0.1.0.
+
+current_supported_actions:
+  - read_text
+  - mock_summary
+  - write_json
+
+out_of_scope_v0_1_0:
+  - parallel execution
+  - conditional branches
+  - retry queue
+  - scheduler
+  - remote execution
+  - runtime event bus
+  - plugin auto-discovery
+  - telegram notification
+  - dashboard integration
+
+future_ideas_unlocked:
+  - plugin action registry
+  - action schema validation
+  - conditional workflow branches
+  - retry policy
+  - timeout policy
+  - multi-workflow routing
+  - file watcher direct trigger mode
+  - telegram notification hub integration
+  - dashboard integration
+  - RADAR runtime bridge
+
+related_files:
+  root: RADAR_SERVICE/workflow_runner_mvp/
+  core_files:
+    - README.md
+    - pyproject.toml
+    - src/workflow_runner/actions.py
+    - src/workflow_runner/cli.py
+    - src/workflow_runner/contract.py
+    - src/workflow_runner/executor.py
+    - src/workflow_runner/loader.py
+    - src/workflow_runner/logger.py
+    - src/workflow_runner/validator.py
+  examples:
+    - examples/file_watcher_event.sample.json
+    - examples/file_watcher_integration_example.md
+    - examples/workflow.sample.yaml
+  tests:
+    - tests/test_actions.py
+    - tests/test_cli.py
+    - tests/test_contract.py
+    - tests/test_executor.py
+    - tests/test_integration_examples.py
+    - tests/test_loader.py
+    - tests/test_logger.py
+    - tests/test_validator.py
+
+final_state:
+  utility: "Utility #8 — Workflow Runner MVP"
+  status: RELEASED
+  version: v0.1.0
+  pytest: "34 passed"
+  build: PASS
+
+conclusion: >
+  Utility #8 completed its MVP lifecycle and is locked as RELEASED.
+  It establishes the first reusable YAML-driven workflow execution engine
+  in RADAR Services and forms the execution counterpart to Utility #7 —
+  File Watcher Automation MVP.

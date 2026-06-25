@@ -1,0 +1,79 @@
+
+snapshot_id: SNAP-DOCUMENT-PIPELINE-MVP-V0.1.0-RELEASED-2026-06-15
+
+phase: RADAR Services Bridge Phase
+
+status: RELEASED
+
+utility_id: 5
+
+name: Document Pipeline MVP
+
+version: v0.1.0
+
+mission:
+
+* Detect document types
+* Process text documents
+* OCR image documents
+* Export JSON reports
+* Export Markdown reports
+* Publish to Knowledge Search
+
+modules:
+
+* detector
+* text_processor
+* ocr_processor
+* exporter
+* publisher
+* batch_processor
+* cli
+
+features:
+
+* text_pipeline
+* image_ocr_pipeline
+* json_export
+* markdown_export
+* publish_layer
+* batch_processing
+* knowledge_search_integration
+
+cli_commands:
+
+* doc-pipe
+* --json
+* --md
+* --publish
+* --batch
+
+test_status:
+pytest_passed: 43
+release_ready: true
+
+knowledge_search:
+integrated: true
+publish_directory: outputs/published_documents
+
+architecture:
+
+* detector
+* router
+* processor
+* exporter
+* publisher
+* knowledge_search
+
+locked:
+
+* Keep MVP scope
+* No PDF parsing in v0.1.0
+* No LLM summarization in v0.1.0
+* Publish as plain text
+* Knowledge Search is official downstream target
+
+next_phase:
+utility_id: 6
+name: Automation Layer Foundation
+status: READY

@@ -1,0 +1,41 @@
+snapshot_id: SNAP-TELEGRAM-KNOWLEDGE-BOT-V0.1.2-STABLE
+
+phase: RADAR_SERVICES
+
+utility: TELEGRAM_KNOWLEDGE_BOT
+
+version: v0.1.2
+
+status: STABLE
+
+lock_state: LOCKED
+
+dependencies:
+  - RADAR_KNOWLEDGE_SEARCH_V0.1.0
+
+features:
+  - start_command
+  - help_command
+  - search_command
+  - stats_command
+  - reindex_command
+
+backend:
+  storage: sqlite
+  search: sqlite_fts5
+
+integrations:
+  - telegram_api
+  - knowledge_search_service
+
+tests:
+  startup: PASS
+  telegram_api: PASS
+  search_query: PASS
+  stats_query: PASS
+  reindex: PASS
+
+next_phase:
+  utility_3: DOCUMENT_ASSISTANT_MVP
+
+state: LOCKED
