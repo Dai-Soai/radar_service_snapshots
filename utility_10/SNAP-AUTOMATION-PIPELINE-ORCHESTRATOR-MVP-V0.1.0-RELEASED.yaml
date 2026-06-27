@@ -1,0 +1,179 @@
+snapshot_id: SNAP-AUTOMATION-PIPELINE-ORCHESTRATOR-MVP-V0.1.0-RELEASED
+phase: RADAR Services Bridge Phase
+utility: "Utility #10 — Automation Pipeline Orchestrator MVP"
+status: RELEASED
+version: v0.1.0
+
+test_status:
+  pytest: "32 passed"
+
+package_build:
+  status: PASS
+
+context: >
+  Utility #10 — Automation Pipeline Orchestrator MVP is a minimal orchestration
+  layer for RADAR Services automation pipelines. It coordinates Utility #8 —
+  Workflow Runner MVP and Utility #9 — Telegram Notification Hub MVP through
+  CLI adapters and JSON/YAML contracts. It also defines the integration bridge
+  from Utility #7 — File Watcher Automation MVP into the full automation pipeline.
+
+completed_milestones:
+  M1_bootstrap_project:
+    - Created project structure
+    - Created pyproject.toml
+    - Created README.md
+    - Created src/automation_pipeline_orchestrator/
+    - Created tests/
+    - Initialized venv and git
+    - Pytest passed
+
+  M2_pipeline_contract:
+    - Added WorkflowStageConfig
+    - Added NotificationStageConfig
+    - Added PipelineDefinition
+    - Added StageResult
+    - Added PipelineResult
+    - Added pipeline_from_dict()
+    - Pytest passed
+
+  M3_yaml_pipeline_loader:
+    - Added YAML pipeline loader
+    - Added load_yaml_file()
+    - Added load_pipeline()
+    - Added PipelineLoadError
+    - Added pipelines/sample.pipeline.yaml
+    - Pytest passed
+
+  M4_workflow_runner_adapter:
+    - Added Workflow Runner command builder
+    - Added Workflow Runner subprocess adapter
+    - Added success/failure/exception handling
+    - Added adapter tests
+    - Pytest passed
+
+  M5_notification_hub_adapter:
+    - Added Telegram Notification Hub command builder
+    - Added Notification subprocess adapter
+    - Added success/failure/exception handling
+    - Added adapter tests
+    - Pytest passed
+
+  M6_cli_orchestrator:
+    - Added automation-orchestrator CLI
+    - Added run command
+    - Added pipeline loading
+    - Added pipeline execution
+    - Added CLI tests
+    - Pytest passed
+
+  M7_json_pipeline_log:
+    - Added pipeline_result_to_dict()
+    - Added write_pipeline_log()
+    - Added CLI option --log-json
+    - Added pipeline log tests
+    - Pytest passed
+
+  M8_full_pipeline_integration_example:
+    - Added file event sample from Utility #7
+    - Added pipeline execution sample
+    - Added full pipeline integration document
+    - Added integration tests
+    - Locked no direct package dependency between Utility #7/#8/#9/#10
+    - Pytest passed
+
+  M9_packaging_and_readme:
+    - Completed README
+    - Completed installation guide
+    - Completed usage examples
+    - Completed project structure documentation
+    - Completed release notes
+    - Verified package build
+    - Verified wheel install
+    - Verified CLI after install
+    - Pytest passed
+
+  M10_release:
+    - Locked version v0.1.0
+    - Locked status RELEASED
+    - Created release snapshot
+    - Utility #10 moved to released state
+
+locked_architecture:
+  flow:
+    - "Utility #7 — File Watcher Automation MVP"
+    - file event JSON
+    - "Utility #10 — Automation Pipeline Orchestrator MVP"
+    - pipeline YAML
+    - "Utility #8 — Workflow Runner MVP"
+    - execution log JSON
+    - "Utility #9 — Telegram Notification Hub MVP"
+    - Telegram notification
+    - "Utility #10 — pipeline execution log JSON"
+
+locked_decisions:
+  LOCKED-1: Utility #10 is an orchestration layer, not a replacement for Utility #7, #8, or #9.
+  LOCKED-2: Utility #10 coordinates through CLI adapters and JSON/YAML contracts.
+  LOCKED-3: No direct package dependency is introduced between Utility #7, Utility #8, Utility #9, and Utility #10.
+  LOCKED-4: MVP v0.1.0 supports sequential two-stage orchestration only.
+  LOCKED-5: Pipeline YAML is the control contract for Utility #10.
+  LOCKED-6: Pipeline Log JSON is the audit trail for Utility #10.
+
+related_utilities:
+  - "Utility #7 — File Watcher Automation MVP"
+  - "Utility #8 — Workflow Runner MVP"
+  - "Utility #9 — Telegram Notification Hub MVP"
+  - "Utility #10 — Automation Pipeline Orchestrator MVP"
+
+out_of_scope_v0_1_0:
+  - parallel stage execution
+  - retry queue
+  - scheduler
+  - dynamic plugin discovery
+  - runtime event bus
+  - dashboard UI
+  - remote execution
+  - direct package dependency between utilities
+
+future_ideas_unlocked:
+  - retry policy
+  - timeout policy
+  - conditional stages
+  - multi-pipeline routing
+  - file watcher direct trigger mode
+  - scheduler integration
+  - pipeline template registry
+  - job history viewer
+  - dashboard integration
+  - RADAR runtime bridge
+
+related_files:
+  root: RADAR_SERVICE/automation_pipeline_orchestrator_mvp/
+  core_files:
+    - README.md
+    - pyproject.toml
+    - src/automation_pipeline_orchestrator/cli.py
+    - src/automation_pipeline_orchestrator/contract.py
+    - src/automation_pipeline_orchestrator/loader.py
+    - src/automation_pipeline_orchestrator/logger.py
+    - src/automation_pipeline_orchestrator/notification_adapter.py
+    - src/automation_pipeline_orchestrator/orchestrator.py
+    - src/automation_pipeline_orchestrator/workflow_adapter.py
+  examples:
+    - examples/file_event.sample.json
+    - examples/full_pipeline_integration_example.md
+    - examples/pipeline_execution.sample.json
+  pipelines:
+    - pipelines/sample.pipeline.yaml
+
+final_state:
+  utility: "Utility #10 — Automation Pipeline Orchestrator MVP"
+  status: RELEASED
+  version: v0.1.0
+  pytest: "32 passed"
+  build: PASS
+
+conclusion: >
+  Utility #10 completed its MVP lifecycle and is locked as RELEASED.
+  It establishes the orchestration layer for RADAR Services automation pipelines
+  and connects Utility #7, Utility #8, and Utility #9 into a complete
+  contract-based automation flow.
