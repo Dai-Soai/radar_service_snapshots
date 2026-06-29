@@ -1,0 +1,90 @@
+snapshot_id: SNAP-PIPELINE-VARIABLE-RESOLVER-MVP-V0.1.0-RELEASED
+
+phase: RADAR Services Bridge Phase
+
+utility:
+  id: 12
+  name: Pipeline Variable Resolver MVP
+
+status: RELEASED
+
+version: v0.1.0
+
+release_date: 2026-06-29
+
+purpose: >
+  Resolve runtime variables inside pipeline YAML files
+  before orchestration.
+
+modules:
+  - Bootstrap
+  - Variable Contract
+  - Resolver Engine
+  - Built-in Providers
+  - CLI Resolver
+  - JSON Resolve Report
+  - Integration Example
+  - Packaging
+  - README
+  - Release
+
+providers:
+  - workspace
+  - logs
+  - outputs
+  - pipeline_id
+  - run_id
+
+outputs:
+  - resolved.pipeline.yaml
+  - resolve.report.json
+
+integration:
+  upstream:
+    - Utility #11 Pipeline Template Registry MVP
+
+  downstream:
+    - Utility #10 Automation Pipeline Orchestrator MVP
+
+contracts:
+  owns:
+    - variable context
+    - variable providers
+    - placeholder resolution
+    - resolve report JSON
+
+  does_not_own:
+    - template rendering
+    - workflow execution
+    - notification
+    - orchestration
+
+locked:
+  - Resolver only replaces variables.
+  - Workflow execution belongs to Utility #10.
+  - Template rendering belongs to Utility #11.
+  - Communication is contract-based.
+  - No direct package dependency.
+  - YAML is the integration boundary.
+
+tests:
+  pytest: 29 passed
+
+build:
+  package: PASS
+
+release:
+  github_release: true
+
+  git_tag: v0.1.0
+
+status_summary:
+  development: COMPLETE
+
+  testing: PASS
+
+  packaging: PASS
+
+  release: PASS
+
+overall_status: STABLE
