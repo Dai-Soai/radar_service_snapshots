@@ -1,0 +1,100 @@
+snapshot_id: SNAP-PIPELINE-TEMPLATE-REGISTRY-MVP-V0.1.0-RELEASED
+
+phase: RADAR Services Bridge Phase
+
+utility: Utility #11
+
+name: Pipeline Template Registry MVP
+
+version: v0.1.0
+
+status: RELEASED
+
+objective: Generate reusable pipeline YAML from reusable template contracts.
+
+completed:
+  M1:
+    - bootstrap project
+    - pytest foundation
+
+  M2:
+    - template contract
+    - registry contract
+
+  M3:
+    - yaml registry loader
+    - template discovery
+    - validation
+
+  M4:
+    - template renderer
+    - variable replacement
+
+  M5:
+    - cli list templates
+
+  M6:
+    - cli render pipeline
+
+  M7:
+    - integration example
+    - utility #10 compatibility
+
+  M8:
+    - json render log
+
+  M9:
+    - packaging
+    - readme
+    - wheel
+    - source package
+
+  M10:
+    - github release
+    - release tag
+
+architecture:
+  input:
+    - template yaml
+
+  processing:
+    - registry loader
+    - template renderer
+
+  output:
+    - pipeline yaml
+
+integration:
+  upstream: none
+
+  downstream:
+    - automation pipeline orchestrator
+
+contracts:
+  communication:
+    - yaml
+
+  dependency:
+    - no direct package dependency
+
+deliverables:
+  - cli
+  - registry
+  - renderer
+  - json log
+  - packaging
+  - release
+
+tests:
+  pytest: 36 passed
+
+release:
+  tag: v0.1.0
+
+status_notes:
+  stable: true
+
+next:
+  utility: Utility #12
+
+  name: Pipeline Variable Resolver MVP
