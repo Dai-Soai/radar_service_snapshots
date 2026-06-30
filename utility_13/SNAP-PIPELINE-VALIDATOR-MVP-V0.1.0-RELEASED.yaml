@@ -1,0 +1,122 @@
+snapshot:
+  id: SNAP-PIPELINE-VALIDATOR-MVP-V0.1.0-RELEASED
+
+  utility: 13
+
+  name: Pipeline Validator MVP
+
+  version: v0.1.0
+
+  phase: RADAR Services Bridge Phase
+
+  status: RELEASED
+
+  release_date: 2026-06-30
+
+objective:
+  - Validate pipeline YAML
+  - Validate schema
+  - Validate file paths
+  - Produce JSON validation reports
+  - Never execute pipelines
+
+completed:
+  M1:
+    name: Bootstrap
+    status: PASS
+
+  M2:
+    name: Validation Contract
+    status: PASS
+
+  M3:
+    name: YAML Loader
+    status: PASS
+
+  M4:
+    name: Schema Validator
+    status: PASS
+
+  M5:
+    name: File Path Validator
+    status: PASS
+
+  M6:
+    name: CLI Validate
+    status: PASS
+
+  M7:
+    name: JSON Validation Report
+    status: PASS
+
+  M8:
+    name: Integration Example
+    status: PASS
+
+  M9:
+    name: Packaging and README
+    status: PASS
+
+  M10:
+    name: Release
+    status: PASS
+
+tests:
+  pytest: 45 passed
+
+  cli: PASS
+
+  packaging: PASS
+
+  wheel: PASS
+
+  github_release: PASS
+
+contract_boundary:
+  owns:
+    - pipeline validation
+
+    - schema validation
+
+    - path validation
+
+    - validation report JSON
+
+  depends_on:
+    utility_10:
+      - pipeline execution
+
+    utility_11:
+      - template rendering
+
+    utility_12:
+      - variable resolution
+
+locked:
+  - Validator validates only
+
+  - Validator never resolves variables
+
+  - Validator never renders templates
+
+  - Validator never executes pipelines
+
+  - Validation report is JSON artifact
+
+deliverables:
+  cli:
+    - pipeline-validator
+
+  package:
+    - pipeline_validator_mvp
+
+  reports:
+    - validation.sample.json
+
+  docs:
+    - README.md
+
+    - integration_example.md
+
+  release:
+    - GitHub Release v0.1.0
