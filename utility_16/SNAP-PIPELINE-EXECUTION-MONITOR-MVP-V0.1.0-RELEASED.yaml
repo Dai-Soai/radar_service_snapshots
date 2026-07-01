@@ -1,0 +1,120 @@
+id: SNAP-PIPELINE-EXECUTION-MONITOR-MVP-V0.1.0-RELEASED
+
+phase: RADAR Services Bridge Phase
+
+status:
+  - RELEASED
+  - LOCKED
+
+repository: pipeline_execution_monitor_mvp
+
+release: v0.1.0
+
+purpose: >
+  Observe pipeline execution status and produce standardized
+  execution monitor reports for downstream utilities.
+
+modules:
+  M1:
+    name: Bootstrap
+    status: completed
+
+  M2:
+    name: Execution Monitor Contract
+    status: completed
+
+  M3:
+    name: Execution Log Loader
+    status: completed
+
+  M4:
+    name: Pipeline State Builder
+    status: completed
+
+  M5:
+    name: Timeline Builder
+    status: completed
+
+  M6:
+    name: Metrics Builder
+    status: completed
+
+  M7:
+    name: CLI Monitor
+    status: completed
+
+  M8:
+    name: JSON Monitor Report
+    status: completed
+
+  M9:
+    name: Packaging and README
+    status: completed
+
+  M10:
+    name: GitHub Release
+    status: completed
+
+testing:
+  pytest: 51 passed
+
+  cli: passed
+
+  verbose_cli: passed
+
+  json_export: passed
+
+  editable_install: passed
+
+  wheel_build: passed
+
+  github_release: passed
+
+outputs:
+  - pipeline_state
+  - node_states
+  - timeline
+  - metrics
+  - monitor_report.json
+
+output_directory: outputs/
+
+architecture:
+  - Execution Log
+  - Loader
+  - Pipeline State Builder
+  - Timeline Builder
+  - Metrics Builder
+  - Monitor Report
+  - CLI
+  - JSON Export
+
+roadmap_position:
+  - Pipeline Template Registry
+  - Pipeline Variable Resolver
+  - Pipeline Validator
+  - Pipeline Dependency Analyzer
+  - Pipeline Execution Planner
+  - Pipeline Execution Monitor
+  - Pipeline Orchestrator
+  - Workflow Runner
+
+locked:
+  - Execution monitoring remains independent from orchestration.
+
+  - Execution Monitor consumes execution logs only.
+
+  - Execution Monitor produces standardized monitor reports.
+
+  - JSON monitor reports remain reusable.
+
+  - Output artifacts are stored under outputs/.
+
+  - README follows standardized RADAR Services template.
+
+  - Single responsibility is preserved.
+
+next:
+  utility: Pipeline Retry Controller MVP
+
+  module: M1 Bootstrap
