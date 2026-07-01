@@ -1,0 +1,201 @@
+
+---
+
+```yaml
+snapshot:
+  id: SNAP-PIPELINE-EXECUTION-PLANNER-MVP-V0.1.0-RELEASED
+  utility: 15
+  name: Pipeline Execution Planner MVP
+  version: v0.1.0
+  phase: RADAR Services Bridge Phase
+  status: RELEASED
+  release_date: 2026-07-01
+
+objective:
+  - Build execution plans from validation reports
+  - Build execution plans from dependency reports
+  - Classify ready pipelines
+  - Classify blocked pipelines
+  - Aggregate planning issues
+  - Produce JSON execution plan report
+  - Never execute pipelines
+
+completed:
+  M1:
+    name: Bootstrap
+    status: PASS
+    deliverables:
+      - project structure
+      - pytest bootstrap
+      - CLI package entrypoint
+      - GitHub repository
+
+  M2:
+    name: Plan Contract
+    status: PASS
+    deliverables:
+      - PlannedPipeline
+      - PlanIssue
+      - ExecutionPlan
+      - ready_plan
+      - blocked_plan
+
+  M3:
+    name: Dependency Report Loader
+    status: PASS
+    deliverables:
+      - dependency report JSON loading
+      - dependency report status extraction
+      - execution order extraction
+      - dependency issue extraction
+
+  M4:
+    name: Validation Report Loader
+    status: PASS
+    deliverables:
+      - validation report JSON loading
+      - validation report status extraction
+      - validation issue extraction
+      - validation error count extraction
+
+  M5:
+    name: Plan Builder
+    status: PASS
+    deliverables:
+      - ready plan generation
+      - blocked plan generation
+      - issue aggregation
+      - execution order mapping
+
+  M6:
+    name: Blocked Pipeline Detection
+    status: PASS
+    deliverables:
+      - pipeline-level blocking
+      - partial blocked pipeline classification
+      - ready/blocked pipeline split
+
+  M7:
+    name: CLI Plan
+    status: PASS
+    deliverables:
+      - pipeline-planner plan
+      - execution plan summary
+      - ready pipeline listing
+      - blocked pipeline listing
+      - issue output
+
+  M8:
+    name: JSON Plan Report
+    status: PASS
+    deliverables:
+      - execution.plan.json
+      - ready_pipelines
+      - blocked_pipelines
+      - execution_order
+      - issues
+
+  M9:
+    name: Packaging and README
+    status: PASS
+    deliverables:
+      - README.md
+      - pyproject.toml
+      - wheel
+      - source package
+
+  M10:
+    name: Release
+    status: PASS
+    deliverables:
+      - GitHub Release
+      - git tag v0.1.0
+
+tests:
+  pytest: 42 passed
+  cli: PASS
+  packaging: PASS
+  wheel: PASS
+  github_release: PASS
+
+contract_boundary:
+  owns:
+    - execution plan generation
+    - ready pipeline classification
+    - blocked pipeline classification
+    - plan issue aggregation
+    - execution plan JSON report
+
+  does_not_own:
+    - template rendering
+    - variable resolution
+    - pipeline validation
+    - dependency graph analysis
+    - workflow execution
+    - notification delivery
+    - orchestration execution
+
+  upstream:
+    utility_14:
+      - dependency report JSON
+      - dependency-first execution order
+
+    utility_13:
+      - validation report JSON
+
+    utility_12:
+      - resolved pipeline generation
+
+    utility_11:
+      - template rendering
+
+  downstream:
+    utility_10:
+      - pipeline orchestration
+
+locked:
+  - Execution Planner plans only
+  - Execution Planner never executes pipelines
+  - Execution Planner never validates schemas or paths
+  - Execution Planner never analyzes dependency graphs
+  - Execution Planner never resolves variables
+  - Execution Planner never renders templates
+  - Execution plan is a JSON artifact
+  - Execution belongs exclusively to Utility #10
+  - No direct package dependency between utilities
+
+architecture:
+  flow:
+    - Utility #11 Pipeline Template Registry
+    - Utility #12 Pipeline Variable Resolver
+    - Utility #13 Pipeline Validator
+    - Utility #14 Pipeline Dependency Analyzer
+    - Utility #15 Pipeline Execution Planner
+    - Utility #10 Pipeline Orchestrator
+    - Utility #8 Workflow Runner
+
+deliverables:
+  cli:
+    - pipeline-planner
+
+  package:
+    - pipeline_execution_planner_mvp
+
+  reports:
+    - execution.plan.json
+
+  docs:
+    - README.md
+
+  examples:
+    - examples/
+
+  release:
+    - GitHub Release v0.1.0
+
+status_summary:
+  development: COMPLETE
+  testing: PASS
+  packaging: PASS
+  release: PASS
+  overall_status: STABLE
