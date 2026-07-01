@@ -1,0 +1,65 @@
+snapshot_id: SNAP-PIPELINE-RETRY-CONTROLLER-MVP-V0.1.0-RELEASED
+
+phase: RADAR Services Bridge Phase
+
+status: LOCKED
+
+utility:
+  id: 17
+  name: Pipeline Retry Controller MVP
+
+version: v0.1.0
+
+objective: Build a reusable retry planning engine from Pipeline Execution Monitor reports.
+
+milestones:
+  M1: Bootstrap
+  M2: Retry Contract
+  M3: Monitor Report Loader
+  M4: Failure Detector
+  M5: Retry Eligibility Engine
+  M6: Backoff Calculator
+  M7: Retry Planner
+  M8: CLI Retry Planner
+  M9: JSON Retry Plan Report
+  M10: Packaging & Release
+
+tests:
+  pytest: 82 passed
+
+cli:
+  command: pipeline-retry plan
+
+options:
+  - verbose
+  - json
+  - output
+  - retry-status
+  - backoff
+  - base-delay
+  - max-delay
+
+outputs:
+  - outputs/retry_plan.json
+
+repository: pipeline_retry_controller_mvp
+
+release:
+  version: v0.1.0
+
+locked_decisions:
+  - Retry planning is separated from retry execution.
+  - Input is monitor_report.json.
+  - Output is retry_plan.json.
+  - Retry policy is configurable.
+  - Planner is reusable by downstream utilities.
+
+future:
+  - YAML retry policy
+  - Retry history
+  - Retry analytics
+  - Runtime integration
+  - Telegram notification
+  - Retry executor
+
+result: Utility #17 released successfully.
