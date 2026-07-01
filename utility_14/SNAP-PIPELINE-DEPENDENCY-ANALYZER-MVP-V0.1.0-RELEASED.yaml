@@ -1,0 +1,181 @@
+
+---
+
+```yaml
+snapshot:
+  id: SNAP-PIPELINE-DEPENDENCY-ANALYZER-MVP-V0.1.0-RELEASED
+  utility: 14
+  name: Pipeline Dependency Analyzer MVP
+  version: v0.1.0
+  phase: RADAR Services Bridge Phase
+  status: RELEASED
+  release_date: 2026-07-01
+
+objective:
+  - Analyze dependency relationships between pipeline YAML files
+  - Detect missing dependencies
+  - Detect circular dependencies
+  - Generate dependency-first execution order
+  - Produce JSON dependency report
+  - Never execute pipelines
+
+completed:
+  M1:
+    name: Bootstrap
+    status: PASS
+
+  M2:
+    name: Dependency Contract
+    status: PASS
+    deliverables:
+      - DependencyNode
+      - DependencyIssue
+      - DependencyResult
+
+  M3:
+    name: Pipeline Loader
+    status: PASS
+    deliverables:
+      - pipeline YAML loading
+      - pipeline directory loading
+      - pipeline_id extraction
+      - depends_on extraction
+
+  M4:
+    name: Graph Builder
+    status: PASS
+    deliverables:
+      - dependency graph builder
+      - missing dependency detection
+      - graph helpers
+
+  M5:
+    name: Cycle Detection
+    status: PASS
+    deliverables:
+      - cycle detection
+      - self-cycle detection
+      - graph cycle status
+
+  M6:
+    name: Execution Order
+    status: PASS
+    deliverables:
+      - topological sort
+      - dependency-first execution order
+      - cycle rejection
+
+  M7:
+    name: CLI Analyze
+    status: PASS
+    deliverables:
+      - pipeline-dependency analyze
+      - dependency summary output
+      - execution order output
+
+  M8:
+    name: JSON Dependency Report
+    status: PASS
+    deliverables:
+      - dependency.report.json
+      - pipeline count
+      - issue count
+      - execution order
+      - issues
+
+  M9:
+    name: Packaging and README
+    status: PASS
+    deliverables:
+      - README.md
+      - pyproject.toml
+      - wheel
+      - source package
+
+  M10:
+    name: Release
+    status: PASS
+    deliverables:
+      - GitHub Release
+      - git tag v0.1.0
+
+tests:
+  pytest: 36 passed
+  cli: PASS
+  packaging: PASS
+  wheel: PASS
+  github_release: PASS
+
+contract_boundary:
+  owns:
+    - pipeline dependency analysis
+    - dependency graph construction
+    - missing dependency detection
+    - cycle detection
+    - execution order generation
+    - dependency report JSON
+
+  does_not_own:
+    - template rendering
+    - variable resolution
+    - schema validation
+    - workflow execution
+    - notification delivery
+    - orchestration execution
+
+  upstream:
+    utility_13:
+      - pipeline validation
+    utility_12:
+      - variable resolution
+    utility_11:
+      - template rendering
+
+  downstream:
+    utility_10:
+      - pipeline orchestration
+
+locked:
+  - Dependency Analyzer analyzes only
+  - Dependency Analyzer never executes pipelines
+  - Dependency Analyzer never resolves variables
+  - Dependency Analyzer never renders templates
+  - Dependency Analyzer never validates full pipeline schema
+  - Execution order is derived from dependency graph only
+  - Dependency report is a JSON artifact
+  - No direct package dependency between utilities
+
+architecture:
+  flow:
+    - Utility #11 Pipeline Template Registry
+    - Utility #12 Pipeline Variable Resolver
+    - Utility #13 Pipeline Validator
+    - Utility #14 Pipeline Dependency Analyzer
+    - Utility #10 Pipeline Orchestrator
+    - Utility #8 Workflow Runner
+
+deliverables:
+  cli:
+    - pipeline-dependency
+
+  package:
+    - pipeline_dependency_analyzer_mvp
+
+  reports:
+    - dependency.report.json
+
+  docs:
+    - README.md
+
+  examples:
+    - examples/pipelines
+
+  release:
+    - GitHub Release v0.1.0
+
+status_summary:
+  development: COMPLETE
+  testing: PASS
+  packaging: PASS
+  release: PASS
+  overall_status: STABLE
